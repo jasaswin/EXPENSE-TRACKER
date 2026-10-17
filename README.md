@@ -227,19 +227,3 @@ REACT_APP_API_URL=https://expense-tracker-suya.onrender.com/api
 
 After deployment, ensure the backend's `CLIENT_URL` matches the actual Vercel production URL and that CORS is configured correctly.
 
-## 🔐 Security
-
-- Never commit real `.env` files or credentials to GitHub.
-- Use strong, unique JWT secrets.
-- Keep database credentials private.
-- Configure CORS to allow only trusted frontend origins.
-- Validate incoming requests and enforce authorization for private expense data.
-- Rotate any credentials accidentally exposed in public repositories or messages.
-
-
-
-
-- Project Repository: [EXPENSE-TRACKER](https://github.com/jasaswin/EXPENSE-TRACKER)
-- Live Application: [ExpenseTracker](https://expense-tracker-eight-iota-29.vercel.app/)
-
-
