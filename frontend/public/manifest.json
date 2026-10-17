@@ -1,0 +1,11 @@
+{
+  "short_name": "Expenses",
+  "name": "Expense Tracker",
+  "icons": [
+    { "src": "favicon.svg", "sizes": "any", "type": "image/svg+xml" }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#111936",
+  "background_color": "#f2f4f9"
+}

@@ -1,0 +1,297 @@
+.expenses-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.expenses-head h1 {
+  font-size: clamp(1.5rem, 3.2vw, 2.1rem);
+}
+
+/* ---------- Summary panel ---------- */
+.summary {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  padding: 28px;
+  border-radius: 24px;
+  background: var(--ink);
+  color: #fff;
+}
+
+.summary-label {
+  color: #aab3d6;
+}
+
+.summary-total {
+  margin-top: 4px;
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 6vw, 3.6rem);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+}
+
+.summary-stats {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  justify-content: start;
+  gap: 24px;
+  margin: 28px 0 0;
+}
+
+.summary-stats dt {
+  font-size: 13px;
+  color: #aab3d6;
+}
+
+.summary-stats dd {
+  margin: 2px 0 0;
+  font-weight: 600;
+}
+
+.summary-chart {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.chart-box {
+  flex: 0 0 150px;
+  width: 150px;
+  height: 150px;
+}
+
+.legend {
+  flex: 1;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 14px;
+}
+
+.legend li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 0;
+}
+
+.legend-dot {
+  flex: 0 0 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.legend-name {
+  color: #d5daf0;
+}
+
+.legend-value {
+  margin-left: auto;
+  font-weight: 600;
+}
+
+.summary-empty {
+  color: #aab3d6;
+}
+
+/* ---------- Filters ---------- */
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin: 24px 0 16px;
+}
+
+.filters select {
+  width: auto;
+}
+
+.search-box {
+  position: relative;
+  flex: 1 1 220px;
+}
+
+.search-box svg {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--muted);
+}
+
+.search-box input {
+  padding-left: 38px;
+}
+
+.date-filter {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.date-filter input {
+  width: auto;
+}
+
+/* ---------- Expense list ---------- */
+.expense-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: #fff;
+  overflow: hidden;
+}
+
+.expense-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--line);
+}
+
+.expense-item:last-child {
+  border-bottom: none;
+}
+
+.expense-tile {
+  display: grid;
+  place-items: center;
+  flex: 0 0 42px;
+  height: 42px;
+  border-radius: 12px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.expense-main {
+  flex: 1;
+  min-width: 0;
+}
+
+.expense-title {
+  font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.expense-meta {
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.expense-amount {
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.expense-actions {
+  display: flex;
+  gap: 2px;
+}
+
+/* ---------- Empty / loading / error states ---------- */
+.state-message {
+  padding: 48px 0;
+  text-align: center;
+  color: var(--muted);
+}
+
+.state-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin-top: 16px;
+  padding: 48px 20px;
+  border: 1px dashed #c9cfe3;
+  border-radius: 18px;
+  text-align: center;
+  color: var(--muted);
+}
+
+.state-box h2 {
+  font-size: 22px;
+  color: var(--ink);
+}
+
+.state-box .form-error {
+  margin: 0;
+}
+
+@media (max-width: 800px) {
+  .summary {
+    grid-template-columns: 1fr;
+    padding: 22px;
+    gap: 24px;
+  }
+  .expenses-head {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+@media (max-width: 480px) {
+  .summary-chart {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .chart-box {
+    align-self: center;
+  }
+  .summary-stats {
+    grid-template-columns: repeat(2, auto);
+  }
+
+  /* Filters: full-width dropdown, two date boxes side by side */
+  .filters select {
+    width: 100%;
+  }
+  .date-filter {
+    flex: 1 1 45%;
+  }
+  .date-filter input {
+    flex: 1;
+    min-width: 0;
+  }
+
+  /* Expense row: icon | title + meta | amount, with the buttons on a second line */
+  .expense-item {
+    display: grid;
+    grid-template-columns: 42px 1fr auto;
+    grid-template-areas:
+      "tile main amount"
+      "tile actions actions";
+    column-gap: 12px;
+    row-gap: 0;
+    align-items: start;
+  }
+  .expense-tile {
+    grid-area: tile;
+  }
+  .expense-main {
+    grid-area: main;
+  }
+  .expense-amount {
+    grid-area: amount;
+  }
+  .expense-actions {
+    grid-area: actions;
+    justify-content: flex-end;
+    margin-top: 4px;
+  }
+  .expense-title {
+    white-space: normal;
+  }
+}
