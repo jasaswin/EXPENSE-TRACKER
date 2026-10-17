@@ -1,134 +1,245 @@
-# Expense Tracker
+# 💰 ExpenseTracker — Personal Expense Management
 
-A simple full-stack app to track your daily spending.
+**ExpenseTracker** is a full-stack web application that helps users manage personal expenses, monitor spending patterns, and organize transactions through an intuitive dashboard. Built with React.js, Node.js, Express.js, and MongoDB.
 
-- Sign up and log in
-- Add, edit and delete expenses
-- Search and filter by category or date
-- See your total, this month's spending and a colourful chart by category
+<p align="center">
+  <a href="https://expense-tracker-eight-iota-29.vercel.app/">
+    <strong>🌐 Live Demo</strong>
+  </a>
+  &nbsp; | &nbsp;
+  <a href="https://github.com/jasaswin/EXPENSE-TRACKER">
+    <strong>💻 GitHub Repository</strong>
+  </a>
+</p>
 
-**Built with:** React (frontend), Node.js + Express (backend), MongoDB (database)
+## 🚀 Live Deployment
 
+| Component | Platform | URL |
+|---|---|---|
+| Frontend | Vercel | [Open ExpenseTracker](https://expense-tracker-eight-iota-29.vercel.app/) |
+| Backend API | Render | [Open Backend](https://expense-tracker-suya.onrender.com) |
+| Database | MongoDB Atlas | Cloud-hosted MongoDB |
+
+> **Note:** The frontend and backend deployments have been created successfully. Login, registration, and expense operations should be tested on the live website to verify end-to-end functionality.
+
+## ✨ Features
+
+- **User Authentication:** User registration and login with JWT-based authentication.
+- **Expense Management:** Create, view, update, and delete expense records.
+- **Interactive Dashboard:** View spending summaries and expense breakdowns.
+- **Category-wise Tracking:** Organize expenses by category.
+- **Search and Filtering:** Find expenses using available search and filter options.
+- **Persistent Storage:** Store expense records in MongoDB.
+- **RESTful API:** Communicate between the React frontend and Express backend.
+- **Responsive Interface:** Access the application from supported desktop and mobile browsers.
+
+## 🛠️ Tech Stack
+
+| Layer | Technologies |
+|---|---|
+| Frontend | React.js, React Router |
+| Styling | CSS3 |
+| Backend | Node.js, Express.js |
+| Database | MongoDB Atlas, Mongoose |
+| Authentication | JSON Web Tokens (JWT) |
+| API Communication | Axios, REST API |
+| Frontend Hosting | Vercel |
+| Backend Hosting | Render |
+| Version Control | Git, GitHub |
+
+## 📁 Project Structure
+
+```text
+EXPENSE-TRACKER/
+├── backend/
+│   ├── src/
+│   │   ├── config/
+│   │   ├── controllers/
+│   │   ├── middleware/
+│   │   ├── models/
+│   │   ├── routes/
+│   │   ├── app.js
+│   │   └── server.js
+│   ├── .env.example
+│   └── package.json
+│
+├── frontend/
+│   ├── public/
+│   ├── src/
+│   ├── .env.example
+│   ├── .env.development
+│   └── package.json
+│
+├── .gitignore
+└── README.md
 ```
-Expensetracker/
-├── backend/     the server (API + database code)
-└── frontend/    the website (what you see in the browser)
-```
 
----
 
-## 1. What you need first
 
-1. **Node.js** (version 18 or newer). Download from https://nodejs.org and install it.
-   Check it worked by typing `node -v` in a terminal.
-2. **A free MongoDB Atlas database**. Get your connection string:
-   - Sign up at https://www.mongodb.com/atlas and create a free cluster.
-   - Click **Database Access** > add a user with a username and password (remember them).
-   - Click **Network Access** > **Add IP Address** > **Allow access from anywhere** > Confirm.
-   - Click **Database** > **Connect** > **Drivers** and copy the connection string. It looks like:
-     `mongodb+srv://myuser:<password>@cluster0.abcde.mongodb.net/?retryWrites=true&w=majority`
-   - Replace `<password>` with your real password. Then add `expense-tracker` right after `.net/`, like this:
-     `mongodb+srv://myuser:mypassword@cluster0.abcde.mongodb.net/expense-tracker?retryWrites=true&w=majority`
+## ⚙️ Prerequisites
 
----
+Install the following before running the project locally:
 
-## 2. Set up the backend
+- [Node.js](https://nodejs.org/) (version 18 or newer)
+- npm
+- [MongoDB Atlas](https://www.mongodb.com/cloud/atlas) account or a local MongoDB instance
+- [Git](https://git-scm.com/)
 
-Open a terminal in the `backend` folder.
+## 💻 Run Locally
 
-1. Open the file named **`.env`** in a text editor and replace the placeholder values:
-
-   ```
-   PORT=5000
-   MONGO_URI=paste your connection string here
-   JWT_SECRET=type any long random text here
-   CLIENT_URL=http://localhost:3000
-   ```
-
-2. Run these two commands:
-
-   ```bash
-   npm install
-   npm run dev
-   ```
-
-3. You should see:
-
-   ```
-   MongoDB connected
-   Server running on port 5000
-   ```
-
-Leave this terminal open.
-
----
-
-## 3. Set up the frontend
-
-Open a **second** terminal in the `frontend` folder and run:
+### 1. Clone the repository
 
 ```bash
+git clone https://github.com/jasaswin/EXPENSE-TRACKER.git
+cd EXPENSE-TRACKER
+```
+
+### 2. Set up the backend
+
+```bash
+cd backend
 npm install
+```
+
+Create a `.env` file inside the `backend` directory:
+
+```dotenv
+PORT=5000
+MONGO_URI=your_mongodb_connection_string
+JWT_SECRET=your_secure_random_secret
+CLIENT_URL=http://localhost:3000
+```
+
+Replace the placeholder values with your actual configuration.
+
+Generate a secure JWT secret using:
+
+```bash
+node -e "console.log(require('crypto').randomBytes(48).toString('hex'))"
+```
+
+Ensure your MongoDB connection string uses the correct database username, password, cluster address, and database name. URL-encode special characters in the username or password when required.
+
+### 3. Start the backend
+
+From the `backend` directory, run:
+
+```bash
+npm run dev
+```
+
+The backend should start on:
+
+```text
+http://localhost:5000
+```
+
+Confirm that MongoDB connects successfully in the terminal.
+
+### 4. Set up the frontend
+
+Open a second terminal from the project root:
+
+```bash
+cd frontend
+npm install
+```
+
+Create or update `frontend/.env.development`:
+
+```dotenv
+REACT_APP_API_URL=http://localhost:5000/api
+```
+
+This configures the React application to use your local Express API.
+
+### 5. Start the frontend
+
+From the `frontend` directory:
+
+```bash
 npm start
 ```
 
-Your browser opens at **http://localhost:3000**. Click **Sign up**, create an account, and add your first expense.
+Open the application at:
 
----
+**http://localhost:3000**
 
-## Something not working?
+Keep both terminal sessions running while using the application.
 
-| Problem | Fix |
-| ------- | --- |
-| `MONGO_URI is missing` | The `.env` file must be inside the `backend` folder and have your connection string. |
-| `ECONNREFUSED` or timeout when connecting | In MongoDB Atlas > Network Access, allow your IP (or "anywhere"). |
-| `bad auth` / authentication failed | The username or password in `MONGO_URI` is wrong. If your password has symbols like `@` or `#`, change it to letters and numbers only. |
-| Website says "Cannot reach the server" | The backend is not running. Start it again with `npm run dev` in the `backend` folder. |
-| `npm` is not recognized | Node.js is not installed, or restart your terminal after installing it. |
-| Port 5000 already in use | Change `PORT` in `backend/.env` (for example 5001) and also change `frontend/.env.development` to `http://localhost:5001/api`. Restart both. |
+## 🔌 Backend API
 
----
+The backend API is deployed at:
 
-## How the code is organised (for learning)
+`https://expense-tracker-suya.onrender.com`
 
-**Backend** (`backend/src`)
+The API base path used by the frontend is:
 
-| File | What it does |
-| ---- | ------------ |
-| `server.js` | Starts the server, connects to the database, sets up routes |
-| `config/db.js` | Connects to MongoDB |
-| `models/User.js`, `models/Expense.js` | The shape of the data saved in the database |
-| `routes/` | Lists the web addresses (like `/api/expenses`) |
-| `controllers/` | The code that runs for each address (signup, login, add expense, ...) |
-| `middleware/authMiddleware.js` | Checks the user is logged in before allowing expense actions |
+`https://expense-tracker-suya.onrender.com/api`
 
-**Frontend** (`frontend/src`)
+Typical REST API operations may include:
 
-| Folder | What it holds |
-| ------ | ------------- |
-| `pages/` | The 4 screens: Home, Login, Signup, Expenses (+ their `.css` files) |
-| `components/` | Reusable parts: Navbar, expense form, filters, list item, summary chart |
-| `services/api.js` | All the calls to the backend in one place |
-| `context/AuthContext.js` | Remembers who is logged in |
-| `utils/` | Small helpers for money, dates and category colours |
-| `index.css` | Colours, fonts, buttons and form styles used everywhere |
+| Method | Purpose |
+|---|---|
+| `POST` | Register or authenticate users; create expenses |
+| `GET` | Retrieve expense records or summaries |
+| `PUT` | Update expense records |
+| `DELETE` | Delete expense records |
 
-To change the look, edit the colours at the top of `frontend/src/index.css`.
-To change the categories, edit `frontend/src/utils/categories.js`.
+The exact endpoint paths depend on the routes implemented in the backend source code.
 
----
+## 🌍 Deployment
 
-## Put it online (optional)
+### Backend — Render
 
-**Backend on Render.com** (free)
-1. Upload the project to GitHub.
-2. On Render choose **New > Web Service**, pick your repo, set **Root Directory** = `backend`, **Build Command** = `npm install`, **Start Command** = `npm start`.
-3. Under Environment add `MONGO_URI`, `JWT_SECRET`, and `CLIENT_URL` (your frontend's web address, added after step below).
-4. Open your Render address. You should see "Expense Tracker API is running".
+The Express.js backend is deployed on Render.
 
-**Frontend on Vercel or Netlify** (free)
-1. Create a new project from the same repo with **Root Directory** = `frontend`.
-2. Add the environment variable `REACT_APP_API_URL` = `https://YOUR-BACKEND-NAME.onrender.com/api`
-3. Deploy. Then copy the website address into `CLIENT_URL` on Render and redeploy the backend.
+1. Connect the GitHub repository to Render.
+2. Set the root directory to `backend`.
+3. Set the build command to `npm install`.
+4. Set the start command to `npm start`.
+5. Configure the required environment variables.
+6. Confirm that MongoDB Atlas allows the deployed backend to connect.
 
-**Keep your `.env` file private.** Never upload it to GitHub (the included `.gitignore` already protects it).
+Required environment variables:
+
+| Variable | Purpose |
+|---|---|
+| `MONGO_URI` | MongoDB connection string |
+| `JWT_SECRET` | JWT signing secret |
+| `CLIENT_URL` | Allowed frontend origin for CORS |
+| `PORT` | Server port; Render provides this for web services |
+
+### Frontend — Vercel
+
+The React frontend is deployed on Vercel.
+
+1. Import the GitHub repository.
+2. Select `frontend` as the root directory.
+3. Use `npm run build` as the build command.
+4. Use `build` as the output directory.
+5. Add the environment variable below.
+6. Deploy the application.
+
+```dotenv
+REACT_APP_API_URL=https://expense-tracker-suya.onrender.com/api
+```
+
+After deployment, ensure the backend's `CLIENT_URL` matches the actual Vercel production URL and that CORS is configured correctly.
+
+## 🔐 Security
+
+- Never commit real `.env` files or credentials to GitHub.
+- Use strong, unique JWT secrets.
+- Keep database credentials private.
+- Configure CORS to allow only trusted frontend origins.
+- Validate incoming requests and enforce authorization for private expense data.
+- Rotate any credentials accidentally exposed in public repositories or messages.
+
+
+
+
+- Project Repository: [EXPENSE-TRACKER](https://github.com/jasaswin/EXPENSE-TRACKER)
+- Live Application: [ExpenseTracker](https://expense-tracker-eight-iota-29.vercel.app/)
+
+
